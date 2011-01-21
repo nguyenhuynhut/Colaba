@@ -73,10 +73,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="subscriptions_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="subscriptions_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/subscriptions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="57" selection-start="1176" selection-end="1188" vertical-scroll-proportion="-5.32">
+            <state line="201" column="0" selection-start="8470" selection-end="8470" vertical-scroll-proportion="0.6542373">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="17" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/merchants/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="25" selection-start="1547" selection-end="1562" vertical-scroll-proportion="-12.75">
               <folding />
             </state>
           </provider>
@@ -109,10 +127,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="subscription.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="subscription.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/subscription.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="65" selection-start="542" selection-end="542" vertical-scroll-proportion="0.2556391">
+            <state line="8" column="65" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,7 +139,7 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/subscriptions/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="48" selection-start="3495" selection-end="3495" vertical-scroll-proportion="-4.5102043">
+            <state line="62" column="64" selection-start="2440" selection-end="2440" vertical-scroll-proportion="-5.897959">
               <folding />
             </state>
           </provider>
@@ -136,28 +154,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/subscriptions/new.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="-2.8333333">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/subscriptions/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="24" column="22" selection-start="651" selection-end="651" vertical-scroll-proportion="-17.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/merchants/_form.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="63" selection-start="343" selection-end="343" vertical-scroll-proportion="-7.0833335">
               <folding />
             </state>
           </provider>
@@ -683,7 +683,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3551089" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="DBHelper" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
@@ -695,7 +695,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494244" sideWeight="0.9882747" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494244" sideWeight="0.63316584" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" />
@@ -776,13 +776,6 @@
     <find-history />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="24" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20110120093948_create_subscriptions.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="25" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0">
@@ -818,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/merchants/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="63" selection-start="343" selection-end="343" vertical-scroll-proportion="-7.0833335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/subscriptions/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="-2.8333333">
@@ -835,13 +821,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/subscriptions/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="22" selection-start="651" selection-end="651" vertical-scroll-proportion="-17.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/merchant.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -867,23 +846,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/subscription.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="65" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/merchant.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/merchants/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="25" selection-start="1547" selection-end="1562" vertical-scroll-proportion="-12.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/subscriptions/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="48" selection-start="3495" selection-end="3495" vertical-scroll-proportion="-4.5102043">
+        <state line="62" column="64" selection-start="2440" selection-end="2440" vertical-scroll-proportion="-5.897959">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/subscriptions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="57" selection-start="1176" selection-end="1188" vertical-scroll-proportion="-5.32">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/subscription.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="65" selection-start="542" selection-end="542" vertical-scroll-proportion="0.2556391">
+        <state line="201" column="0" selection-start="8470" selection-end="8470" vertical-scroll-proportion="0.6542373">
           <folding />
         </state>
       </provider>

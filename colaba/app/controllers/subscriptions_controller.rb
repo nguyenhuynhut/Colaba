@@ -82,7 +82,7 @@ class SubscriptionsController < ApplicationController
                                         :locality => params[:subscription]["billing_city"],
                                         :region => params[:subscription]["billing_state"],
                                         :postal_code => params[:subscription]["billing_zipcode"],
-                                        :country_code_alpha2 => params[:subscription]["billing_country"]
+                                        :country_code_numeric => params[:subscription]["billing_country"]
                                 }
                         }
         )
@@ -107,7 +107,7 @@ class SubscriptionsController < ApplicationController
                                       :locality => params[:subscription]["billing_city"],
                                       :region => params[:subscription]["billing_state"],
                                       :postal_code => params[:subscription]["billing_zipcode"],
-                                      :country_code_alpha2 => params[:subscription]["billing_country"]
+                                      :country_code_numeric => params[:subscription]["billing_country"]
                               }
                       }
       )
@@ -166,7 +166,7 @@ class SubscriptionsController < ApplicationController
                                     :locality => params["billing_city"],
                                     :region => params["billing_state"],
                                     :postal_code => params["billing_zipcode"],
-                                    :country_code_alpha2 => params["billing_country"]
+                                    :country_code_numeric => params["billing_country"]
                             }
                     }
     )

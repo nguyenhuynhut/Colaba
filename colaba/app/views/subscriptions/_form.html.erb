@@ -59,7 +59,10 @@
             </tr>
             <tr>
                 <td class="label">Country</td>
-                <td><%= f.text_field "billing_country" %></td>
+                <td>
+                    <%= select_tag 'subscription[billing_country]', options_for_select(Braintree::Address::CountryNames, "billing_country") %>
+                 
+                </td>
             </tr>
             <tr>
                 <td class="label">Company <span>(optional)</span></td>
