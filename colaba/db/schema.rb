@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110120093948) do
   end
 
   create_table "subscriptions", :force => true do |t|
+    t.text     "billing"
     t.string   "status"
     t.string   "plan_id"
     t.string   "sub_id"

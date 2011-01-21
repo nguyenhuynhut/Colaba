@@ -12,6 +12,7 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions/1
   # GET /subscriptions/1.xml
+
   def show
     @subscription = Subscription.find(params[:id])
 
@@ -23,6 +24,7 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions/new
   # GET /subscriptions/new.xml
+
   def new
     @subscription = Subscription.new
 
@@ -33,28 +35,90 @@ class SubscriptionsController < ApplicationController
   end
 
   # GET /subscriptions/1/edit
+
   def edit
     @subscription = Subscription.find(params[:id])
   end
 
   # POST /subscriptions
   # POST /subscriptions.xml
+
   def create
+    #create a random key to identify the new customer
+    customer_id = Array.new(8/2) { rand(256) }.pack('C*').unpack('H*').first
+
+    # The APP_CONFIG value comes from app_config.yml in the Config dir
     @subscription = Subscription.new(params[:subscription])
 
-    respond_to do |format|
+    #maybe this should be in the model?
+    @subscription.plan_id = APP_CONFIG[:subscription_token]
+    @subscription.customer_id = customer_id
+    @subscription.sub_id = "#{Time.now.strftime("%Y%m%d%H%M%s")}"
+    # First try to create the customer in BrainTree's vault, if successful then save the subscription record.
+    # I'd like this process improved to so it's using error handling instead of flash messages
+    @result = Braintree::Customer
+    if create_customer(params[:subscription], customer_id,  @subscription.sub_id)
+
+      @merchant = Merchant.find(session[:merchant_id])
+      @merchant.update_attributes(:customer_id => customer_id)
+      # I removed all the respond_to code, I don't think I'll be using XML formating, shoudl all the respond_do code be removed?
       if @subscription.save
-        format.html { redirect_to(@subscription, :notice => 'Subscription was successfully created.') }
-        format.xml  { render :xml => @subscription, :status => :created, :location => @subscription }
+        redirect_to(:controller => 'subscriptions', :action => 'index', :notice => 'Subscription was successfully created.')
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @subscription.errors, :status => :unprocessable_entity }
+        @result = Braintree::Customer.create(
+                :id => customer_id,
+                        :first_name => params[:subscription]["billing_first_name"],
+                        :last_name => params[:subscription]["billing_last_name"],
+                        :company => params[:subscription]["billing_company"],
+                        :credit_card => {
+                                :cardholder_name => params[:subscription]["credit_card_name"],
+                                :number => params[:subscription]["credit_card_number"],
+                                :token => @subscription.sub_id,
+                                :expiration_date => "#{params[:subscription]["credit_card_month"]}/#{params[:subscription]["credit_card_year"]}",
+                                :cvv => params[:subscription]["credit_card_cvv_code"],
+                                :billing_address => {
+                                        :street_address => params[:subscription]["billing_address"],
+                                        :extended_address =>params[:subscription]["billing_address2"],
+                                        :locality => params[:subscription]["billing_city"],
+                                        :region => params[:subscription]["billing_state"],
+                                        :postal_code => params[:subscription]["billing_zipcode"],
+                                        :country_code_alpha2 => params[:subscription]["billing_country"]
+                                }
+                        }
+        )
+        render :action => "new"
       end
+
+    else
+      @result = Braintree::Customer.create(
+              :id => customer_id,
+                      :first_name => params[:subscription]["billing_first_name"],
+                      :last_name => params[:subscription]["billing_last_name"],
+                      :company => params[:subscription]["billing_company"],
+                      :credit_card => {
+                              :cardholder_name => params[:subscription]["credit_card_name"],
+                              :number => params[:subscription]["credit_card_number"],
+                              :token => @subscription.sub_id,
+                              :expiration_date => "#{params[:subscription]["credit_card_month"]}/#{params[:subscription]["credit_card_year"]}",
+                              :cvv => params[:subscription]["credit_card_cvv_code"],
+                              :billing_address => {
+                                      :street_address => params[:subscription]["billing_address"],
+                                      :extended_address =>params[:subscription]["billing_address2"],
+                                      :locality => params[:subscription]["billing_city"],
+                                      :region => params[:subscription]["billing_state"],
+                                      :postal_code => params[:subscription]["billing_zipcode"],
+                                      :country_code_alpha2 => params[:subscription]["billing_country"]
+                              }
+                      }
+      )
+      #was not able to create the customer, display error messages
+      render :action => "new"
     end
   end
 
   # PUT /subscriptions/1
   # PUT /subscriptions/1.xml
+
   def update
     @subscription = Subscription.find(params[:id])
 
@@ -71,6 +135,7 @@ class SubscriptionsController < ApplicationController
 
   # DELETE /subscriptions/1
   # DELETE /subscriptions/1.xml
+
   def destroy
     @subscription = Subscription.find(params[:id])
     @subscription.destroy
@@ -78,6 +143,59 @@ class SubscriptionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(subscriptions_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+
+  def create_customer(params, customer_id, sub_id)
+    result = Braintree::Customer.create(
+            :id => customer_id,
+                    :first_name => params["billing_first_name"],
+                    :last_name => params["billing_last_name"],
+                    :company => params["billing_company"],
+                    :credit_card => {
+                            :cardholder_name => params["credit_card_name"],
+                            :number => params["credit_card_number"],
+                            :token => sub_id,
+                            :expiration_date => "#{params["credit_card_month"]}/#{params["credit_card_year"]}",
+                            :cvv => params["credit_card_cvv_code"],
+                            :billing_address => {
+                                    :street_address => params["billing_address"],
+                                    :extended_address =>params["billing_address2"],
+                                    :locality => params["billing_city"],
+                                    :region => params["billing_state"],
+                                    :postal_code => params["billing_zipcode"],
+                                    :country_code_alpha2 => params["billing_country"]
+                            }
+                    }
+    )
+
+    if result.success?
+      create_subscription(sub_id, params["fee"])
+    else
+      logger.info "ERROR CREATING CUSTOMER: #{result.message}"
+      #flash[:error] = "Please double check your billing information: #{result.message}"
+      return false
+    end
+  end
+
+  def create_subscription(sub_id, fee)
+    logger.info "User has selected: #{APP_CONFIG[:subscription_token]}"
+    result = Braintree::Subscription.create(
+            :payment_method_token => sub_id,
+                    :id => sub_id,
+                    :plan_id => APP_CONFIG[:subscription_token],
+                    :trial_duration => 0,
+                    :trial_duration_unit => "month",
+                    :price => fee
+    )
+    if result.success?
+      return result.subscription.status
+    else
+      logger.info "ERROR CREATING SUBSCRIPTION: #{result.message}"
+      flash[:error] = "We were not able to bill your credit card: #{result.message}"
+      return false
     end
   end
 end

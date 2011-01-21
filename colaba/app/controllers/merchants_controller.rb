@@ -46,20 +46,16 @@ class MerchantsController < ApplicationController
 
   def create
     @merchant = Merchant.new(params[:merchant])
-    customer = Braintree::Customer.create
-    if customer.success?
-      @merchant.customer_id = customer.customer.id
       respond_to do |format|
         if @merchant.save
-          format.html { redirect_to(@merchant, :notice => 'Merchant was successfully created.') }
+          session[:merchant_id] = @merchant.id
+          format.html { redirect_to(:controller => 'subscriptions', :action =>"new", :notice => 'Merchant was successfully created.') }
           format.xml  { render :xml => @merchant, :status => :created, :location => @merchant }
         else
           format.html { render :action => "new" }
           format.xml  { render :xml => @merchant.errors, :status => :unprocessable_entity }
         end
       end
-    else
-    end
   end
 
   # PUT /merchants/1
