@@ -14,22 +14,9 @@ class Subscription < ActiveRecord::Base
 
 
   validate :expiration_date_cannot_be_in_the_past
-  before_create :populate_subscription
   def expiration_date_cannot_be_in_the_past
     errors.add(:credit_card_expire, "can't be in the past") if
       !credit_card_month.blank? and !credit_card_year.blank? and (Integer(credit_card_year) < Date.today.year() or (Integer(credit_card_year) ==Date.today.year() and Integer(credit_card_month) < Date.today.month()))
   end
-  def populate_subscription
-    self.billing = Hash.new({
-      :first_name => billing_first_name,
-      :last_name => billing_last_name,
-      :company_name => billing_company,
-      :address => billing_address,
-      :address2 => billing_address2,
-      :city => billing_city,
-      :state => billing_state,
-      :postal_code => billing_zipcode,
-      :country => billing_country
-    })
-  end
+
 end

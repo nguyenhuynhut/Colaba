@@ -1,7 +1,6 @@
 class CreateSubscriptions < ActiveRecord::Migration
   def self.up
     create_table :subscriptions do |t|
-      t.text :billing
       t.string :status
       t.string :plan_id
       t.string :sub_id
